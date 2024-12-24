@@ -1,21 +1,36 @@
-import { Transport, TransportFactory } from './transport';
+import { IUser } from "./IUser";
+import { IUserRepository } from "./IUserRepository";
 
-import { TruckFactory } from './truckFactory';
+import { UserRepository } from "./UserRepository";
 
-import { ShipFactory } from './shipFactory';
+const repo: IUserRepository = new UserRepository();
 
-import { AirplaneFactory } from './airplaneFactory';
+const user1: IUser = {
+    id: "1",
+    name: "John Doe",
+    email: "johndoe@mail.com"
+};
 
-const randomFactor = Math.floor(10 * Math.random());
+const user2: IUser = {
+    id: "2",
+    name: "Jane Doe",
+    email: "janedoe@mail.com"
+};
 
-const factory: TransportFactory<Transport> = randomFactor < 2
-    ? new TruckFactory()
-    : randomFactor < 4
-        ? new ShipFactory()
-        : new AirplaneFactory();
+(async () => {
+    await repo.create(user1);
 
-console.log('factory', factory.constructor.name);
+    console.log(await repo.findAll());
 
-const transport = factory.createTransport();
+    await repo.create(user2);
 
-transport.deliver(); // "Delivering cargo by truck" или "Delivering cargo by ship"
+    console.log(await repo.findAll());
+
+    console.log(await repo.findById("1"));
+
+    console.log(await repo.update("1", { name: "John Smith" }));
+
+    console.log(await repo.delete("2"));
+
+    console.log(await repo.findAll());
+})();
