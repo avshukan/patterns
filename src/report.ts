@@ -4,7 +4,7 @@ import * as path from 'path';
 
 const folderPath = process.argv[2];
 
-const reportFilePath = path.join(__dirname, 'report.txt');
+const reportFilePath = path.join(__dirname, '..', 'report.txt');
 
 function readFilesRecursively(dir: string): string[] {
     let results: string[] = [];
