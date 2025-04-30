@@ -6,7 +6,8 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
-    "test": "npx jest"
+    "test": "npx jest",
+    "cover": "npx jest --coverage"
   },
   "keywords": [],
   "author": "",

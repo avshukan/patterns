@@ -23,7 +23,23 @@ function readFilesRecursively(dir: string): string[] {
 
 function saveContentToReport(files: string[]) {
     const writeStream = fs.createWriteStream(reportFilePath);
-    writeStream.write(`Я выполнил задание\n\n`);
+    writeStream.write(`
+Review my code.
+Focus on:
+
+code cleanliness (readability, simplicity, no duplication);
+
+clean architecture (proper layering, correct dependencies);
+
+GRASP and SOLID principles;
+
+correct use of GoF patterns.
+
+Suggest specific improvements.
+Highlight what is done well.
+Don't rewrite everything — just comment and suggest.
+
+`);
     files.forEach((file) => {
         const content = fs.readFileSync(file, 'utf8');
         const filename = file.split('/').pop();
@@ -32,7 +48,7 @@ function saveContentToReport(files: string[]) {
         writeStream.write(content);
         writeStream.write('\n' + '```' + `\n\n`);
     });
-    writeStream.write(`\nЖду ревью!\n`);
+    writeStream.write(`\n\n\nUse the review guidelines.\n`);
     writeStream.end();
 }
 
