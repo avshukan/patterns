@@ -1,0 +1,33 @@
+export const ErrorCodes = {
+    CREATED_CANT_SHIPPING: 'CREATED_CANT_SHIPPING',
+    CREATED_CANT_DELIVER: 'CREATED_CANT_DELIVER',
+    PAYD_CANT_PAY: 'PAYD_CANT_PAY',
+    PAYD_CANT_DELIVER: 'PAYD_CANT_DELIVER',
+    SHIPPED_CANT_PAY: 'SHIPPED_CANT',
+    SHIPPED_CANT_SHIPPING: 'SHIPPED_CANT_SHIPPING',
+    DELIVERED_CANT_PAY: 'DELIVERED_CANT_PAY',
+    DELIVERED_CANT_SHIPPING: 'DELIVERED_CANT_SHIPPING',
+    DELIVERED_CANT_DELIVER: 'DELIVERED_CANT_DELIVER',
+    DELIVERED_CANT_CANCEL: 'DELIVERED_CANT_CANCEL',
+    CANCELLED_CANT_PAY: 'CANCELLED_CANT_PAY',
+    CANCELLED_CANT_SHIPPING: 'CANCELLED_CANT_SHIPPING',
+    CANCELLED_CANT_DELIVER: 'CANCELLED_CANT_DELIVER',
+    CANCELLED_CANT_CANCEL: 'CANCELLED_CANT_CANCEL',
+} as const;
+
+export const ErrorMessages: Record<(typeof ErrorCodes)[keyof typeof ErrorCodes], string> = {
+    [ErrorCodes.CREATED_CANT_SHIPPING]: 'Не оплаченный заказ не может быть отправлен',
+    [ErrorCodes.CREATED_CANT_DELIVER]: 'Не оплаченный заказ не может быть доставлен',
+    [ErrorCodes.PAYD_CANT_PAY]: 'Заказ уже оплачен',
+    [ErrorCodes.PAYD_CANT_DELIVER]: 'Не отправленный заказ не может быть доставлен',
+    [ErrorCodes.SHIPPED_CANT_PAY]: 'Заказ уже оплачен и отправлен',
+    [ErrorCodes.SHIPPED_CANT_SHIPPING]: 'Заказ уже отправлен',
+    [ErrorCodes.DELIVERED_CANT_PAY]: 'Заказ уже оплачен и доставлен',
+    [ErrorCodes.DELIVERED_CANT_SHIPPING]: 'Заказ уже отправлен и доставлен',
+    [ErrorCodes.DELIVERED_CANT_DELIVER]: 'Заказ уже доставлен',
+    [ErrorCodes.DELIVERED_CANT_CANCEL]: 'Заказ уже доставлен и не может быть отменён',
+    [ErrorCodes.CANCELLED_CANT_PAY]: 'Заказ отменён и не может быть оплачен',
+    [ErrorCodes.CANCELLED_CANT_SHIPPING]: 'Заказ отменён и не может быть отправлен',
+    [ErrorCodes.CANCELLED_CANT_DELIVER]: 'Заказ отменён и не может быть доставлен',
+    [ErrorCodes.CANCELLED_CANT_CANCEL]: 'Заказ уже отменён',
+};
